@@ -1,0 +1,19 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+.venv
+
+
+# API keys and secrets
+*_api_key.txt
+secrets/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# shit
+strange_2
+MAST_2026-03-11T1808
