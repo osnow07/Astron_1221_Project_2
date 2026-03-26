@@ -14,9 +14,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
-# shit
-strange_2
-MAST_2026-03-11T1808
+# very important files shhhh
 .gitignore
 fits_images
 *.png
