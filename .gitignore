@@ -19,3 +19,4 @@ strange_2
 MAST_2026-03-11T1808
 .gitignore
 fits_images
+*.png
