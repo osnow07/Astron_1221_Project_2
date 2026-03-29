@@ -114,6 +114,10 @@ def _cached_u8_preview(path_str: str) -> np.ndarray | None:
 st.title("Local JWST FITS catalog")
 st.caption("Local data only: `fits_images/<target_name>/*.fits`.")
 
+if st.button("🔄 Refresh catalog"):
+    load_catalog.clear()
+    st.rerun()
+
 catalog = load_catalog()
 
 if catalog.empty:
@@ -162,3 +166,23 @@ for col, band in zip(cols, BANDS):
                 st.image(u8, caption=p.name, use_container_width=True)
         except Exception as exc:  # noqa: BLE001 — surface read errors in this column only
             st.warning(f"**{band}:** `{exc}`")
+
+# -------------------------------------------------------------------------
+# False-color composite
+# -------------------------------------------------------------------------
+
+st.markdown("---")
+st.markdown("### False-Color Composite")
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+fc_path = PROJECT_ROOT / f"{choice}_false_color.png"
+
+if fc_path.is_file():
+    left, center, right = st.columns([1, 2, 1])
+    with center:
+        st.image(str(fc_path), caption=f"{choice} — JWST MIRI False Color", use_container_width=True)
+else:
+    st.info(
+        f"No false-color image found for **{choice}**. "
+        f"Run `False_color.ipynb` with this target to generate `{choice}_false_color.png`."
+    )
